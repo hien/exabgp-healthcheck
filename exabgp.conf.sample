@@ -1,9 +1,9 @@
-neighbor 192.168.1.254 {
+neighbor 192.0.2.1 {
 
   # Neighbor Settings
   description "Sample BGP neighbor";
-  router-id 192.168.1.1;
-  local-address 192.168.1.1;
+  router-id 192.0.2.2;
+  local-address 192.0.2.2;
   local-as 64512;
   peer-as 64512;
   hold-time 10;
@@ -11,8 +11,8 @@ neighbor 192.168.1.254 {
   group-updates true;
 
   family {
-    inet4 unicast unicast;
-    inet6 unicast unicast;
+    inet4 unicast;
+    inet6 unicast;
   }
 
   process ipv4service {

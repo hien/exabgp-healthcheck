@@ -49,6 +49,8 @@ A sample configuration file is included for both ExaBGP and healthcheck.pl.
 
 For complete configuration options, see the [Configuration File wiki page].
 
+I have included the configuration and check command I use for my anycasted webservice and recursive DNS in healthcheck.conf.sample
+
 ## Command Line Usage
 For a list of available options, call the script with the '-help' switch:
 ```

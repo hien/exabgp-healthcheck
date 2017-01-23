@@ -42,7 +42,7 @@ debug=no
 # The next hop IP address for the route to be advertised with BGP. This will
 # usually be the servers main IP address. This IP must belong to the same
 # address family as the IP's being announced.
-nexthop=192.168.1.1
+nexthop=192.0.2.2
 
 # The command to use for health check. This can be anything you like - a bash
 # one liner or a script etc. The command that is executed MUST have an exit
@@ -87,3 +87,30 @@ ip=fd12:3456:ffff:1::2
 # withdrawn. Once you are done, remove the file and the service will start
 # being checked again.
 disable=/etc/exabgp/healthcheck_ipv6service.disable
+
+
+[dns1v4]
+nexthop=192.160.102.230
+command="dig @192.160.102.235 a.root-servers.net. a +short"
+ip=192.160.102.235
+disable=/etc/exabgp/healthcheck_dns1v4.disable
+
+[dns1v6]
+nexthop=2605:e200:d00f:2::2
+command="dig @2605:e200:d00a:5301:: a.root-servers.net. a +short"
+ip=2605:e200:d00a:5301::/64
+disable=/etc/exabgp/healthcheck_dns1v6.disable
+
+
+[www1v4]
+nexthop=192.160.102.230
+command="/usr/bin/curl --verbose --header 'Host: any.hextet.net' -4 http://192.160.102.237/"
+ip=192.160.102.237
+disable=/etc/exabgp/healthcheck_www1v4.disable
+
+[www1v6]
+nexthop=2605:e200:d00f:2::2
+command="/usr/bin/curl --verbose --header 'Host: any.hextet.net' -6 http://[2605:e200:d00a:8001::]/"
+ip=2605:e200:d00a:8001::/64
+disable=/etc/exabgp/healthcheck_www1v6.disable
+
